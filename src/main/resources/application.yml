@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gwds-api
+  datasource:
+    url: jdbc:mysql://8.140.229.190:3309/yumi_dms_v1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: EcAH84irCeemjz4t
+    driver-class-name: com.mysql.cj.jdbc.Driver
