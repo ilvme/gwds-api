@@ -53,17 +53,6 @@ public class DatasourceServiceImpl implements DatasourceService {
 
     @Override
     public List<TreeVO> listForTree() {
-        List<DatasourceDO> list = datasourceMapper.selectList(null);
-
-        return list.stream().map(ds -> {
-            TreeVO treeVO = new TreeVO();
-            treeVO.setLevel(0);
-            treeVO.setParentNode(null);
-            treeVO.setChildren(Collections.emptyList());
-            treeVO.setLabel(ds.getName());
-            treeVO.setKey(TreeUtil.buildDatasourceKey(ds));
-            treeVO.setType(DatasourceEnum.getName(ds.getType()));
-            return treeVO;
-        }).toList();
+        return List.of();
     }
 }

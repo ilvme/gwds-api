@@ -17,6 +17,7 @@ public class TreeVO {
     private String key;
     private String label;
 
+    private Boolean isLeaf;
     private TreeVO parentNode;
 
     private List<TreeVO> children;

@@ -15,4 +15,8 @@ public class TreeUtil {
     public static String buildDatasourceKey(DatasourceDO ds) {
         return ds.getId() + "_" + ds.getType();
     }
+
+    public static Integer judgeNodeType(TreeVO node){
+        return 1;
+    }
 }

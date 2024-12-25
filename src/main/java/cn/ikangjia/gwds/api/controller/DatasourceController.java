@@ -35,6 +35,13 @@ public class DatasourceController {
         return datasourceService.listForTree();
     }
 
+    @GetMapping("/tree/level1")
+    public List<TreeVO> treeLevel1() {
+        return datasourceService.listForTree();
+    }
+
+
+
     @GetMapping("/{id}")
     public DatasourceDO get(@PathVariable Long id) {
         return datasourceService.get(id);
