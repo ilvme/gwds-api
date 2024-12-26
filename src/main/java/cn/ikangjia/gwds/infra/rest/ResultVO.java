@@ -1,4 +1,4 @@
-package cn.ikangjia.gwds.api.model;
+package cn.ikangjia.gwds.infra.rest;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
