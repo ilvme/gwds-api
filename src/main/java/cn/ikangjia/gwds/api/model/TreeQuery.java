@@ -10,5 +10,5 @@ import lombok.Data;
 @Data
 public class TreeQuery {
     private Long datasourceId;
-    private TreeVO parent;
+    private TreeNode parent;
 }

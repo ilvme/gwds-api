@@ -1,16 +1,12 @@
 package cn.ikangjia.gwds.service.impl;
 
-import cn.ikangjia.gwds.api.model.TreeVO;
-import cn.ikangjia.gwds.core.DatasourceEnum;
+import cn.ikangjia.gwds.api.model.TreeNode;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.domain.mapper.DatasourceMapper;
 import cn.ikangjia.gwds.service.DatasourceService;
-import cn.ikangjia.gwds.utils.TreeUtil;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author kangJia
@@ -52,7 +48,7 @@ public class DatasourceServiceImpl implements DatasourceService {
     }
 
     @Override
-    public List<TreeVO> listForTree() {
+    public List<TreeNode> listForTree() {
         return List.of();
     }
 }

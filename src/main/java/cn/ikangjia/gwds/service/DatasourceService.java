@@ -1,6 +1,6 @@
 package cn.ikangjia.gwds.service;
 
-import cn.ikangjia.gwds.api.model.TreeVO;
+import cn.ikangjia.gwds.api.model.TreeNode;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 
 import java.util.List;
@@ -17,5 +17,5 @@ public interface DatasourceService {
     List<DatasourceDO> list();
     DatasourceDO get(Long id);
 
-    List<TreeVO> listForTree();
+    List<TreeNode> listForTree();
 }

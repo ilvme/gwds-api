@@ -1,6 +1,6 @@
 package cn.ikangjia.gwds.service;
 
-import cn.ikangjia.gwds.api.model.TreeVO;
+import cn.ikangjia.gwds.api.model.TreeNode;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface TreeService {
 
-    List<TreeVO> list(Long datasourceId, TreeVO parent);
+    List<TreeNode> list(Long datasourceId, TreeNode parent);
 }

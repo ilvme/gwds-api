@@ -8,7 +8,7 @@ import lombok.Getter;
  * @since 2024/12/24 09:50
  */
 @Getter
-public enum DatasourceEnum {
+public enum DatasourceTypeEnum {
     MYSQL(1, "mysql"),
     GBASE_8A(2, "gbase8a"),
     ORACLE(3, "oracle"),
@@ -18,13 +18,13 @@ public enum DatasourceEnum {
     private final int type;
     private final String name;
 
-    DatasourceEnum(int type, String name) {
+    DatasourceTypeEnum(int type, String name) {
         this.type = type;
         this.name = name;
     }
 
     public static String getName(int type) {
-        for (DatasourceEnum ds : DatasourceEnum.values()) {
+        for (DatasourceTypeEnum ds : DatasourceTypeEnum.values()) {
             if (ds.getType() == type) {
                 return ds.getName();
             }

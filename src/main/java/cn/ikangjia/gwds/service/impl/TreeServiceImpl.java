@@ -1,83 +1,74 @@
 package cn.ikangjia.gwds.service.impl;
 
-import cn.ikangjia.gwds.api.model.TreeVO;
-import cn.ikangjia.gwds.core.DatasourceEnum;
+import cn.ikangjia.gwds.api.model.TreeNode;
+import cn.ikangjia.gwds.core.TreeMetaEnum;
+import cn.ikangjia.gwds.core.manager.DatabaseManager;
+import cn.ikangjia.gwds.core.manager.TableManager;
+import cn.ikangjia.gwds.core.manager.ViewManager;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.domain.mapper.DatasourceMapper;
-import cn.ikangjia.gwds.service.DatasourceService;
 import cn.ikangjia.gwds.service.TreeService;
 import cn.ikangjia.gwds.utils.TreeUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
+
 
 /**
- *
  * @author kangJia
- * @email  ikangjia.cn@outlook.com
- * @since  2024/12/24 10:48
+ * @email ikangjia.cn@outlook.com
+ * @since 2024/12/24 10:48
  */
 @Service
+@AllArgsConstructor
 public class TreeServiceImpl implements TreeService {
 
     private final DatasourceMapper datasourceMapper;
+    public final DatabaseManager databaseManager;
+    private final TableManager tableManager;
+    private final ViewManager viewManager;
 
-    public TreeServiceImpl(DatasourceMapper datasourceMapper) {
-        this.datasourceMapper = datasourceMapper;
-    }
 
     @Override
-    public List<TreeVO> list(Long datasourceId, TreeVO parent) {
-        // 查询数据源列表
+    public List<TreeNode> list(Long datasourceId, TreeNode parent) {
+        // 数据源 id 为空时，即为查询根节点
         if (datasourceId == null) {
             List<DatasourceDO> list = datasourceMapper.selectList(null);
-            return list.stream().map(ds -> {
-                TreeVO treeVO = new TreeVO();
-                treeVO.setLevel(0);
-                treeVO.setIsLeaf(false);
-                treeVO.setParentNode(null);
-                treeVO.setChildren(null);
-                treeVO.setLabel(ds.getName());
-                treeVO.setKey(TreeUtil.buildDatasourceKey(ds));
-                treeVO.setType(DatasourceEnum.getName(ds.getType()));
-                return treeVO;
-            }).toList();
+            return list.stream().map(TreeUtil::buildDatasourceTreeNode).toList();
         }
-        if (Objects.equals(parent.getKey(), "1_1")){
-            // 获取数据源下的数据库
-            TreeVO d1 = new TreeVO();
-            d1.setLevel(1);
-            d1.setIsLeaf(false);
-            d1.setParentNode(parent);
-            d1.setChildren(null);
-            d1.setLabel("mysql");
-            d1.setKey("11");
-            d1.setType("database");
 
-            TreeVO d2 = new TreeVO();
-            d2.setLevel(1);
-            d2.setIsLeaf(false);
-            d2.setParentNode(parent);
-            d2.setChildren(null);
-            d2.setLabel("information_schema");
-            d2.setKey("22");
-            d2.setType("database");
+        switch (TreeMetaEnum.getByType(parent.getNodeType())) {
+            case TreeMetaEnum.DATASOURCE: // 查询数据库列表
+                List<String> dbNameList = databaseManager.listDatabase(datasourceId, true);
+                System.out.println(dbNameList);
+                List<TreeNode> dbTreeNodeList = dbNameList.stream()
+                        .map(dbName -> TreeUtil.buildDatabaseTreeNode(datasourceId, parent, dbName))
+                        .collect(Collectors.toList());
 
-            TreeVO d3 = new TreeVO();
-            d3.setLevel(1);
-            d3.setIsLeaf(false);
-            d3.setParentNode(parent);
-            d3.setChildren(null);
-            d3.setLabel("数据对象");
-            d3.setKey("33");
-            d3.setType("数据对象");
+                dbTreeNodeList.add(TreeUtil.buildServerObjFolderTreeNode(datasourceId, parent));
 
-
-
-            return List.of(d1,d2,d3);
+                return dbTreeNodeList;
+            case TreeMetaEnum.DATABASE: // 查询表、视图、存储过程文件夹
+                return TreeUtil.buildDatabaseChildrenFolderTreeNodes(datasourceId, parent);
+            case TreeMetaEnum.TABLE_FOLDER: // 查询表列表
+                List<String> tableNameList = tableManager.listTable(datasourceId, parent.getKey().split("-")[1]);
+                return tableNameList.stream()
+                        .map(tableName -> TreeUtil.buildTableTreeNode(datasourceId, parent, tableName))
+                        .collect(Collectors.toList());
+            case TreeMetaEnum.SERVER_OBJECT_FOLDER: // 查询服务对象列表(用户、会话、系统信息、资源)
+                return TreeUtil.buildServerObjectItemList(parent);
+            case TreeMetaEnum.TABLE: // 查询列、索引、主键文件夹
+            case TreeMetaEnum.VIEW_FOLDER: // 查询视图列表
+                List<String> viewNameList = viewManager.listView(datasourceId, parent.getKey().split("-")[1]);
+                return viewNameList.stream()
+                        .map(viewName -> TreeUtil.buildViewTreeNode(datasourceId, parent, viewName))
+                        .collect(Collectors.toList());
+            case TreeMetaEnum.PROCEDURE_FOLDER: // 查询存储过程列表
+            case TreeMetaEnum.SERVER_OBJECT:
+            default:
+                return List.of();
         }
-        return List.of();
     }
 }

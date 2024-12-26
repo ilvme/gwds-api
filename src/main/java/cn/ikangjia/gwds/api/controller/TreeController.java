@@ -1,13 +1,11 @@
 package cn.ikangjia.gwds.api.controller;
 
 import cn.ikangjia.gwds.api.model.TreeQuery;
-import cn.ikangjia.gwds.api.model.TreeVO;
-import cn.ikangjia.gwds.service.DatasourceService;
+import cn.ikangjia.gwds.api.model.TreeNode;
 import cn.ikangjia.gwds.service.TreeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -26,7 +24,7 @@ public class TreeController {
     }
 
     @PostMapping
-    public List<TreeVO> tree(@RequestBody TreeQuery treeQuery) {
+    public List<TreeNode> tree(@RequestBody TreeQuery treeQuery) {
         return treeService.list(treeQuery.getDatasourceId(), treeQuery.getParent());
     }
 }
