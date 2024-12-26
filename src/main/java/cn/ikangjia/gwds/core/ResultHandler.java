@@ -1,5 +1,7 @@
 package cn.ikangjia.gwds.core;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -27,6 +29,24 @@ public class ResultHandler {
                 temMap.put(metaData.getColumnLabel(i + 1), rs.getObject(i + 1));
             }
             result.add(temMap);
+        }
+        return result;
+    }
+
+    public static  <T> List<T> doObjectResult(Class<T> t, ResultSet rs) throws SQLException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        ResultSetMetaData metaData = rs.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        Field[] fields = t.getDeclaredFields();
+
+        List<T> result = new ArrayList<>(columnCount);
+        while (rs.next()) {
+            T obj = t.getDeclaredConstructor().newInstance();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                field.set(obj, String.valueOf(rs.getObject(field.getName())));
+            }
+            result.add(obj);
         }
         return result;
     }

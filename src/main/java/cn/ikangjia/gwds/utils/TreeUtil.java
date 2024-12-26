@@ -1,8 +1,8 @@
 package cn.ikangjia.gwds.utils;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
-import cn.ikangjia.gwds.core.enums.DatasourceTypeEnum;
-import cn.ikangjia.gwds.core.enums.TreeMetaEnum;
+import cn.ikangjia.gwds.core.constants.DatasourceTypeEnum;
+import cn.ikangjia.gwds.core.constants.TreeMetaEnum;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 
 import java.util.List;

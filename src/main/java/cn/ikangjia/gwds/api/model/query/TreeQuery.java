@@ -1,5 +1,6 @@
-package cn.ikangjia.gwds.api.model;
+package cn.ikangjia.gwds.api.model.query;
 
+import cn.ikangjia.gwds.api.model.TreeNode;
 import lombok.Data;
 
 /**

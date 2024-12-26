@@ -1,4 +1,4 @@
-package cn.ikangjia.gwds.core.enums;
+package cn.ikangjia.gwds.core.constants;
 
 import lombok.Getter;
 

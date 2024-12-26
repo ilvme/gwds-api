@@ -1,5 +1,10 @@
 package cn.ikangjia.gwds.core.manager;
 
+import cn.ikangjia.gwds.api.model.query.DataQuery;
+import cn.ikangjia.gwds.core.entity.CharacterSetEntity;
+import cn.ikangjia.gwds.core.entity.DataEntity;
+import cn.ikangjia.gwds.core.entity.DatabaseEntity;
+
 import java.util.List;
 
 /**
@@ -8,7 +13,26 @@ import java.util.List;
  * @since 2024/12/26 09:32
  */
 public interface DatabaseManager {
+    void createDatabase(long datasourceId, DatabaseEntity database);
+
+    void dropDatabase(long datasourceId, String databaseName);
+
+    void alterDatabase(long datasourceId, String databaseName, String characterSet, String collation);
+
+    DatabaseEntity getDatabaseInfo(long datasourceId, String databaseName);
 
     List<String> listDatabase(long datasourceId, boolean systemDatabaseShow);
+
+    List<String> listTable(long datasourceId, String databaseName);
+
+    List<String> listView(long datasourceId, String databaseName);
+
+    List<CharacterSetEntity> listCharacterSets(Long datasourceId);
+
+    List<String> listCollations(Long datasourceId, String characterSet);
+
+    DataEntity showTableData(Long datasourceId, DataQuery dataQuery);
+
+    Long countTableDataRows(Long datasourceId, String databaseName, String tableName);
 
 }

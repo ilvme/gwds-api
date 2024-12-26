@@ -1,7 +1,7 @@
 package cn.ikangjia.gwds.api.service.impl;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
-import cn.ikangjia.gwds.core.enums.TreeMetaEnum;
+import cn.ikangjia.gwds.core.constants.TreeMetaEnum;
 import cn.ikangjia.gwds.core.manager.DatabaseManager;
 import cn.ikangjia.gwds.core.manager.TableManager;
 import cn.ikangjia.gwds.core.manager.ViewManager;
