@@ -1,4 +1,4 @@
-package cn.ikangjia.gwds.service;
+package cn.ikangjia.gwds.api.service;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
 

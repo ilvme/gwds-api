@@ -1,7 +1,5 @@
 package cn.ikangjia.gwds.core;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -11,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 结果集处理器
+ *
  * @author kangJia
  * @email ikangjia.cn@outlook.com
  * @since 2024/12/26 09:38

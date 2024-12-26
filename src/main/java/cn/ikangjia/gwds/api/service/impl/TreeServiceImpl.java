@@ -1,13 +1,13 @@
-package cn.ikangjia.gwds.service.impl;
+package cn.ikangjia.gwds.api.service.impl;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
-import cn.ikangjia.gwds.core.TreeMetaEnum;
+import cn.ikangjia.gwds.core.enums.TreeMetaEnum;
 import cn.ikangjia.gwds.core.manager.DatabaseManager;
 import cn.ikangjia.gwds.core.manager.TableManager;
 import cn.ikangjia.gwds.core.manager.ViewManager;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.domain.mapper.DatasourceMapper;
-import cn.ikangjia.gwds.service.TreeService;
+import cn.ikangjia.gwds.api.service.TreeService;
 import cn.ikangjia.gwds.utils.TreeUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

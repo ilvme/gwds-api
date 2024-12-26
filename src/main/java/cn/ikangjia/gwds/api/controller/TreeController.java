@@ -2,7 +2,7 @@ package cn.ikangjia.gwds.api.controller;
 
 import cn.ikangjia.gwds.api.model.TreeQuery;
 import cn.ikangjia.gwds.api.model.TreeNode;
-import cn.ikangjia.gwds.service.TreeService;
+import cn.ikangjia.gwds.api.service.TreeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

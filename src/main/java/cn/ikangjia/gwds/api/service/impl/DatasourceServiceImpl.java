@@ -1,9 +1,9 @@
-package cn.ikangjia.gwds.service.impl;
+package cn.ikangjia.gwds.api.service.impl;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.domain.mapper.DatasourceMapper;
-import cn.ikangjia.gwds.service.DatasourceService;
+import cn.ikangjia.gwds.api.service.DatasourceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
