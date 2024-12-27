@@ -13,7 +13,8 @@ import java.sql.Statement;
  * @since 2024/12/26 09:32
  */
 public class MySQLDatasourceUtil {
-    private static final String URL_TEMPLATE = "jdbc:mysql://%s:%s";
+    // TODO 支持超时等更多参数自定义设置
+    private static final String URL_TEMPLATE = "jdbc:mysql://%s:%s?connectTimeout=5000";
 
     /**
      * 获取 MySQL 类型的数据源连接
