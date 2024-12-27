@@ -32,6 +32,11 @@ public class TreeUtil {
     // 存储过程 key 模板, p-存储过程名称-数据库名称-数据源id
     public static final String PROCEDURE_KEY_TEMPLATE = "p-%s";
 
+    // 函数文件夹 key 模板, ff-数据库名称-数据源id
+    public static final String FUNCTION_FOLDER_KEY_TEMPLATE = "ff-%s-%s";
+    // 函数 key 模板, p-函数名称-数据库名称-数据源id
+    public static final String FUNCTION_KEY_TEMPLATE = "f-%s";
+
 
     // 服务对象文件夹 key 模板, sof-数据源id
     public static final String SERVER_OBJECT_FOLDER_KEY_TEMPLATE = "sof-%s"; // 服务对象文件夹 key 模板
@@ -173,7 +178,17 @@ public class TreeUtil {
         procedureFolderNode.setNodeType(TreeMetaEnum.PROCEDURE_FOLDER.getType());
         procedureFolderNode.setDsType(DatasourceTypeEnum.MYSQL.getName());
 
-        return List.of(tableFolderNode, viewFolderNode, procedureFolderNode);
+        TreeNode functionFolderNode = new TreeNode();
+        functionFolderNode.setLevel(2);
+        functionFolderNode.setIsLeaf(false);
+        functionFolderNode.setParent(parent);
+        functionFolderNode.setChildren(null);
+        functionFolderNode.setLabel("函数");
+        functionFolderNode.setKey(String.format(FUNCTION_FOLDER_KEY_TEMPLATE, parent.getLabel(), datasourceId));
+        functionFolderNode.setNodeType(TreeMetaEnum.FUNCTION_FOLDER.getType());
+        functionFolderNode.setDsType(DatasourceTypeEnum.MYSQL.getName());
+
+        return List.of(tableFolderNode, viewFolderNode, procedureFolderNode, functionFolderNode);
     }
 
     public static TreeNode buildTableTreeNode(Long datasourceId, TreeNode parent, String tableName) {

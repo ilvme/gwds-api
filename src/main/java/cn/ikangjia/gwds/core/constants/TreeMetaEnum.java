@@ -24,6 +24,9 @@ public enum TreeMetaEnum {
     PROCEDURE_FOLDER("pf", "pf-%", "存储过程文件夹类型节点"),
     PROCEDURE("p", "p-%", "存储过程类型节点"),
 
+    FUNCTION_FOLDER("ff", "ff-%", "函数文件夹类型节点"),
+    FUNCTION("f", "f-%", "函数类型节点"),
+
     SERVER_OBJECT_FOLDER("sof", "sof-%", "服务对象文件夹类型节点"),
     SERVER_OBJECT("so", "so-%-%", "服务对象类型节点"),
 
