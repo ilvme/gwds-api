@@ -134,7 +134,7 @@ public class ExecuteHandler {
             ResultSet rs = statement.executeQuery();
 
             List<Map<String, Object>> mapList = ResultHandler.doMapResult(rs);
-            if (mapList.size() == 0) {
+            if (mapList.isEmpty()) {
                 return new ArrayList<>();
             }
             return mapList.stream()
@@ -159,14 +159,14 @@ public class ExecuteHandler {
             ResultSet rs = statement.executeQuery();
 
             List<Map<String, Object>> mapList = ResultHandler.doMapResult(rs);
-            if (mapList.size() == 0) {
+            if (mapList.isEmpty()) {
                 return "";
             }
             return mapList.stream()
                     .map(map -> map.get(needReturnColumnLabel))
                     .map(String::valueOf)
-                    .collect(Collectors.toList())
-                    .get(0);
+                    .toList()
+                    .getFirst();
         } catch (SQLException e) {
             throw new DMSException(e.getMessage(), e);
         }

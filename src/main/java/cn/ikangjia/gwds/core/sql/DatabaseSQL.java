@@ -26,7 +26,7 @@ public interface DatabaseSQL {
            default_collation_name as collation, sql_path as sqlPath
            from information_schema.schemata
            where schema_name = '%s';
-            """;
+           """;
     String database_table_count = """
             select count(*) as tableCount from information_schema.tables
             where 'table_type' = 'base table' and 'table_schema' = '%s';
