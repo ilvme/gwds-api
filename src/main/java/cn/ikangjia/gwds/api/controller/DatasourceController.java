@@ -40,7 +40,6 @@ public class DatasourceController {
     }
 
 
-
     @GetMapping("/{id}")
     public DatasourceDO get(@PathVariable Long id) {
         return datasourceService.get(id);
@@ -56,8 +55,8 @@ public class DatasourceController {
         datasourceService.updateDatasource(datasourceDO);
     }
 
-    @DeleteMapping
-    public void removeDatasource(Long id) {
+    @DeleteMapping("/{id}")
+    public void removeDatasource(@PathVariable Long id) {
         datasourceService.removeDatasource(id);
     }
 }
