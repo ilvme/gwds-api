@@ -26,7 +26,8 @@ public class ResultHandler {
         while (rs.next()) {
             Map<String, Object> temMap = new HashMap<>();
             for (int i = 0; i < columnCount; i++) {
-                temMap.put(metaData.getColumnLabel(i + 1), rs.getObject(i + 1));
+                // TODO 这里使用 getString 是因为当数据库为 bit 或 tinyint类型时会返回 true、false，前端不好做处理
+                temMap.put(metaData.getColumnLabel(i + 1), rs.getString(i + 1));
             }
             result.add(temMap);
         }

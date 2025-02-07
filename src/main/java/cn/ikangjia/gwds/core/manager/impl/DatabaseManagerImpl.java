@@ -1,9 +1,7 @@
 package cn.ikangjia.gwds.core.manager.impl;
 
-import cn.ikangjia.gwds.api.model.query.DataQuery;
 import cn.ikangjia.gwds.core.ExecuteHandler;
 import cn.ikangjia.gwds.core.entity.CharacterSetEntity;
-import cn.ikangjia.gwds.core.entity.DataEntity;
 import cn.ikangjia.gwds.core.entity.DatabaseEntity;
 import cn.ikangjia.gwds.core.manager.DatabaseManager;
 import org.springframework.stereotype.Service;
@@ -68,10 +66,6 @@ public class DatabaseManagerImpl implements DatabaseManager {
         return List.of();
     }
 
-    @Override
-    public DataEntity showTableData(Long datasourceId, DataQuery dataQuery) {
-        return null;
-    }
 
     @Override
     public Long countTableDataRows(Long datasourceId, String databaseName, String tableName) {

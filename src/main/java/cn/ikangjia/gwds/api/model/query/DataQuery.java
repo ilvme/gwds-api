@@ -13,7 +13,9 @@ public class DataQuery {
     private String databaseName;
     private String tableName;
 
-
     private Integer pageNum;
     private Integer pageSize;
+
+    private String orderBy;
+    private String where;
 }

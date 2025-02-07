@@ -1,8 +1,6 @@
 package cn.ikangjia.gwds.core.manager;
 
-import cn.ikangjia.gwds.api.model.query.DataQuery;
 import cn.ikangjia.gwds.core.entity.CharacterSetEntity;
-import cn.ikangjia.gwds.core.entity.DataEntity;
 import cn.ikangjia.gwds.core.entity.DatabaseEntity;
 
 import java.util.List;
@@ -30,8 +28,6 @@ public interface DatabaseManager {
     List<CharacterSetEntity> listCharacterSets(Long datasourceId);
 
     List<String> listCollations(Long datasourceId, String characterSet);
-
-    DataEntity showTableData(Long datasourceId, DataQuery dataQuery);
 
     Long countTableDataRows(Long datasourceId, String databaseName, String tableName);
 
