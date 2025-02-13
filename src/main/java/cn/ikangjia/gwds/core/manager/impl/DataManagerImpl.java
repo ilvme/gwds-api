@@ -23,7 +23,12 @@ public class DataManagerImpl implements DataManager {
     @Override
     public DataEntity showTableData(Long datasourceId, DataQuery dataQuery) {
         if (handler.getConnection() != null) {
-            return handler.executeQueryForData(DataSQLBuilder.buildShowTableDataSQL(dataQuery));
+            DataEntity dataEntity = handler.executeQueryForData(DataSQLBuilder.buildShowTableDataSQL(dataQuery));
+
+            String total = handler.executeQueryString(DataSQLBuilder.buildShowTableDataCountSQL(dataQuery), "total");
+            dataEntity.setTotal(Long.parseLong(total));
+
+            return dataEntity;
         }
         return null;
     }

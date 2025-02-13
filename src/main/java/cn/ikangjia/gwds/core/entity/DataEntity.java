@@ -16,4 +16,6 @@ public class DataEntity {
 
     private List<String> columnNameList;
     private List<Map<String, Object>> dataMapList;
+
+    private Long total;
 }

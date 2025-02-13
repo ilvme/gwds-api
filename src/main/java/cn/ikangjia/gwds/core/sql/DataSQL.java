@@ -11,6 +11,7 @@ public interface DataSQL {
     String SHOW_TABLE_DATA_WHERE = "select * from %s.%s where %s limit %s,%s";
     String SHOW_TABLE_DATA_ORDER_BY = "select * from %s.%s order by %s limit %s,%s";
     String SHOW_TABLE_DATA_ORDER_BY_WHERE = "select * from %s.%s where %s order by %s limit %s,%s";
-    String SHOW_TABLE_DATA_COUNT = "select count(*) from %s.%s";
-    String SHOW_TABLE_DATA_COUNT_WHERE = "select count(*) from %s.%s where %s";
+
+    String SHOW_TABLE_DATA_COUNT = "select count(*) as total from %s.%s";
+    String SHOW_TABLE_DATA_COUNT_WHERE = "select count(*) as total from %s.%s where %s";
 }
