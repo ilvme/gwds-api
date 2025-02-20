@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2024/12/23 17:15
  */
 public interface DatasourceService {
-    void createDatasource(DatasourceDO datasourceDO);
+    TreeNode createDatasource(DatasourceDO datasourceDO);
     void updateDatasource(DatasourceDO datasourceDO);
     void removeDatasource(Long id);
     List<DatasourceDO> list();

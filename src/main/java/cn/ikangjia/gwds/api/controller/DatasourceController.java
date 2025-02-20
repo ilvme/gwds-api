@@ -1,8 +1,8 @@
 package cn.ikangjia.gwds.api.controller;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
-import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.api.service.DatasourceService;
+import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,8 +46,8 @@ public class DatasourceController {
     }
 
     @PostMapping
-    public void createDatasource(@RequestBody DatasourceDO datasourceDO) {
-        datasourceService.createDatasource(datasourceDO);
+    public TreeNode createDatasource(@RequestBody DatasourceDO datasourceDO) {
+        return datasourceService.createDatasource(datasourceDO);
     }
 
     @PutMapping

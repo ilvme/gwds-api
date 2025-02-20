@@ -1,9 +1,10 @@
 package cn.ikangjia.gwds.api.service.impl;
 
 import cn.ikangjia.gwds.api.model.TreeNode;
+import cn.ikangjia.gwds.api.service.DatasourceService;
 import cn.ikangjia.gwds.domain.entity.DatasourceDO;
 import cn.ikangjia.gwds.domain.mapper.DatasourceMapper;
-import cn.ikangjia.gwds.api.service.DatasourceService;
+import cn.ikangjia.gwds.utils.TreeUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,10 @@ public class DatasourceServiceImpl implements DatasourceService {
     }
 
     @Override
-    public void createDatasource(DatasourceDO datasourceDO) {
+    public TreeNode createDatasource(DatasourceDO datasourceDO) {
         datasourceMapper.insert(datasourceDO);
+
+        return TreeUtil.buildDatasourceTreeNode(datasourceDO);
     }
 
     @Override
