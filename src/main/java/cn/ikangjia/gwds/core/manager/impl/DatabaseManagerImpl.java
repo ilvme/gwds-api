@@ -1,9 +1,11 @@
 package cn.ikangjia.gwds.core.manager.impl;
 
+import cn.ikangjia.gwds.api.model.DatabaseDTO;
 import cn.ikangjia.gwds.core.ExecuteHandler;
 import cn.ikangjia.gwds.core.entity.CharacterSetEntity;
 import cn.ikangjia.gwds.core.entity.DatabaseEntity;
 import cn.ikangjia.gwds.core.manager.DatabaseManager;
+import cn.ikangjia.gwds.core.sql.DatabaseSQL;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,13 +24,13 @@ public class DatabaseManagerImpl implements DatabaseManager {
     }
 
     @Override
-    public void createDatabase(long datasourceId, DatabaseEntity database) {
-
+    public void createDatabase(long datasourceId, DatabaseDTO databaseDTO) {
+        handler.executeUpdate("create database " + databaseDTO.getDatabaseName() + ";");
     }
 
     @Override
     public void dropDatabase(long datasourceId, String databaseName) {
-
+        handler.execute(String.format(DatabaseSQL.database_drop, databaseName));
     }
 
     @Override

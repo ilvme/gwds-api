@@ -1,5 +1,6 @@
 package cn.ikangjia.gwds.core.manager;
 
+import cn.ikangjia.gwds.api.model.DatabaseDTO;
 import cn.ikangjia.gwds.core.entity.CharacterSetEntity;
 import cn.ikangjia.gwds.core.entity.DatabaseEntity;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @since 2024/12/26 09:32
  */
 public interface DatabaseManager {
-    void createDatabase(long datasourceId, DatabaseEntity database);
+    void createDatabase(long datasourceId, DatabaseDTO databaseDTO);
 
     void dropDatabase(long datasourceId, String databaseName);
 
