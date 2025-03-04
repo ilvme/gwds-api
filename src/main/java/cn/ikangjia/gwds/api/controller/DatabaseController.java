@@ -6,6 +6,8 @@ import cn.ikangjia.gwds.core.manager.DatabaseManager;
 import cn.ikangjia.gwds.utils.TreeUtil;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author kangJia
  * @email ikangjia.cn@outlook.com
@@ -37,5 +39,10 @@ public class DatabaseController {
     @DeleteMapping
     public void dropDatabase(Long datasourceId, String databaseName) {
         databaseManager.dropDatabase(datasourceId, databaseName);
+    }
+
+    @GetMapping
+    public List<String> listDatabase(Long datasourceId, boolean systemDatabaseShow) {
+        return databaseManager.listDatabase(datasourceId, true);
     }
 }

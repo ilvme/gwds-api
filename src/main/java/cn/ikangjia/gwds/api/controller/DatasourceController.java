@@ -24,9 +24,7 @@ public class DatasourceController {
 
     @GetMapping
     public List<DatasourceDO> list() {
-        List<DatasourceDO> list = datasourceService.list();
-        System.out.println(list.getFirst());
-        return list;
+        return datasourceService.list();
     }
 
     @GetMapping("/tree")
