@@ -1,8 +1,8 @@
 package cn.ikangjia.gwds.core.manager.impl;
 
-import cn.ikangjia.gwds.api.model.RenameDTO;
-import cn.ikangjia.gwds.api.model.TableCreateDTO;
-import cn.ikangjia.gwds.api.model.TableInfoVO;
+import cn.ikangjia.gwds.api.model.table.RenameDTO;
+import cn.ikangjia.gwds.api.model.table.TableCreateDTO;
+import cn.ikangjia.gwds.api.model.table.TableInfoVO;
 import cn.ikangjia.gwds.core.ExecuteHandler;
 import cn.ikangjia.gwds.core.entity.ColumnEntity;
 import cn.ikangjia.gwds.core.entity.TableEntity;
