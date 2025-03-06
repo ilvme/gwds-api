@@ -1,9 +1,8 @@
 package cn.ikangjia.gwds.api.controller;
 
+import cn.ikangjia.gwds.api.model.table.RenameDTO;
 import cn.ikangjia.gwds.core.manager.TableManager;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,10 @@ public class TableController {
     @GetMapping
     public List<String> listTables(Long datasourceId, String databaseName){
         return tableManager.listTable(datasourceId, databaseName);
+    }
+
+    @PutMapping("/rename")
+    public Boolean renameTable(@RequestBody RenameDTO renameDTO){
+        return tableManager.renameTable(renameDTO.getDatasourceId(), renameDTO);
     }
 }
