@@ -29,7 +29,7 @@ public class DatabaseController {
         TreeNode treeNode = new TreeNode();
         treeNode.setKey(TreeUtil.buildDatabaseKey(databaseDTO.getDatasourceId(), databaseDTO.getDatabaseName()));
         treeNode.setLabel(databaseDTO.getDatabaseName());
-        treeNode.setNodeType("database");
+        treeNode.setNodeType("db");
         treeNode.setDsType("mysql");
         treeNode.setIsLeaf(false);
 
